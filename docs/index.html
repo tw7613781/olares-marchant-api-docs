@@ -1,0 +1,3805 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#common%2fv1%2fenums.proto">common/v1/enums.proto</a>
+            <ul>
+              
+              
+                <li>
+                  <a href="#common.v1.ActivationStatus"><span class="badge">E</span>ActivationStatus</a>
+                </li>
+              
+                <li>
+                  <a href="#common.v1.LicenseType"><span class="badge">E</span>LicenseType</a>
+                </li>
+              
+                <li>
+                  <a href="#common.v1.OrderStatus"><span class="badge">E</span>OrderStatus</a>
+                </li>
+              
+                <li>
+                  <a href="#common.v1.ProductType"><span class="badge">E</span>ProductType</a>
+                </li>
+              
+                <li>
+                  <a href="#common.v1.SystemChainId"><span class="badge">E</span>SystemChainId</a>
+                </li>
+              
+                <li>
+                  <a href="#common.v1.TransactionType"><span class="badge">E</span>TransactionType</a>
+                </li>
+              
+                <li>
+                  <a href="#common.v1.WebhookStatus"><span class="badge">E</span>WebhookStatus</a>
+                </li>
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#auth%2fv1%2fauth.proto">auth/v1/auth.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#auth.v1.ActivateAndGrantRequest"><span class="badge">M</span>ActivateAndGrantRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.v1.ActivateAndGrantResponse"><span class="badge">M</span>ActivateAndGrantResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.v1.GetApplicationSchemaRequest"><span class="badge">M</span>GetApplicationSchemaRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.v1.GetApplicationSchemaResponse"><span class="badge">M</span>GetApplicationSchemaResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.v1.VerifyLicenseRequest"><span class="badge">M</span>VerifyLicenseRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#auth.v1.VerifyLicenseResponse"><span class="badge">M</span>VerifyLicenseResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#auth.v1.AuthService"><span class="badge">S</span>AuthService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#common%2fv1%2fresponse.proto">common/v1/response.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#common.v1.BaseResponse"><span class="badge">M</span>BaseResponse</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#blockchain%2fv1%2fblockchain.proto">blockchain/v1/blockchain.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#blockchain.v1.AddWalletTokenRequest"><span class="badge">M</span>AddWalletTokenRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.AddWalletTokenResponse"><span class="badge">M</span>AddWalletTokenResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.AssetInfo"><span class="badge">M</span>AssetInfo</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.ChainInfo"><span class="badge">M</span>ChainInfo</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.CreateRsaKeyRequest"><span class="badge">M</span>CreateRsaKeyRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.CreateRsaKeyResponse"><span class="badge">M</span>CreateRsaKeyResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.CreateWalletRequest"><span class="badge">M</span>CreateWalletRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.CreateWalletResponse"><span class="badge">M</span>CreateWalletResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.DeleteChainRequest"><span class="badge">M</span>DeleteChainRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.DeleteChainResponse"><span class="badge">M</span>DeleteChainResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.DeleteRsaKeyRequest"><span class="badge">M</span>DeleteRsaKeyRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.DeleteRsaKeyResponse"><span class="badge">M</span>DeleteRsaKeyResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.DeleteWalletRequest"><span class="badge">M</span>DeleteWalletRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.DeleteWalletResponse"><span class="badge">M</span>DeleteWalletResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.GetChainListRequest"><span class="badge">M</span>GetChainListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.GetChainListResponse"><span class="badge">M</span>GetChainListResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.GetRsaKeyListRequest"><span class="badge">M</span>GetRsaKeyListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.GetRsaKeyListResponse"><span class="badge">M</span>GetRsaKeyListResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.GetTokenInfoRequest"><span class="badge">M</span>GetTokenInfoRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.GetTokenInfoResponse"><span class="badge">M</span>GetTokenInfoResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.GetWalletAssetsRequest"><span class="badge">M</span>GetWalletAssetsRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.GetWalletAssetsResponse"><span class="badge">M</span>GetWalletAssetsResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.GetWalletBalancesRequest"><span class="badge">M</span>GetWalletBalancesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.GetWalletBalancesResponse"><span class="badge">M</span>GetWalletBalancesResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.GetWalletListRequest"><span class="badge">M</span>GetWalletListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.GetWalletListResponse"><span class="badge">M</span>GetWalletListResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.LaresPassRsaKeyCallbackRequest"><span class="badge">M</span>LaresPassRsaKeyCallbackRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.LaresPassRsaKeyCallbackResponse"><span class="badge">M</span>LaresPassRsaKeyCallbackResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.NativeCurrency"><span class="badge">M</span>NativeCurrency</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.RemoveWalletTokenRequest"><span class="badge">M</span>RemoveWalletTokenRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.RemoveWalletTokenResponse"><span class="badge">M</span>RemoveWalletTokenResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.RsaKeyInfo"><span class="badge">M</span>RsaKeyInfo</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.TokenBalance"><span class="badge">M</span>TokenBalance</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.TokenInfo"><span class="badge">M</span>TokenInfo</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.UpdateChainRequest"><span class="badge">M</span>UpdateChainRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.UpdateChainResponse"><span class="badge">M</span>UpdateChainResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.UpdateWalletRequest"><span class="badge">M</span>UpdateWalletRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.UpdateWalletResponse"><span class="badge">M</span>UpdateWalletResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.WalletInfo"><span class="badge">M</span>WalletInfo</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#blockchain.v1.ConnectionStatus"><span class="badge">E</span>ConnectionStatus</a>
+                </li>
+              
+                <li>
+                  <a href="#blockchain.v1.TokenType"><span class="badge">E</span>TokenType</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#blockchain.v1.BlockchainService"><span class="badge">S</span>BlockchainService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#google%2ftype%2fdatetime.proto">google/type/datetime.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#google.type.DateTime"><span class="badge">M</span>DateTime</a>
+                </li>
+              
+                <li>
+                  <a href="#google.type.TimeZone"><span class="badge">M</span>TimeZone</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#keymanage%2fv1%2fkeymanage.proto">keymanage/v1/keymanage.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#keymanage.v1.SubmitPrivateKeyRequest"><span class="badge">M</span>SubmitPrivateKeyRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#keymanage.v1.SubmitPrivateKeyResponse"><span class="badge">M</span>SubmitPrivateKeyResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#keymanage.v1.KeyManageService"><span class="badge">S</span>KeyManageService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#order%2fv1%2forder.proto">order/v1/order.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#order.v1.Blockchain"><span class="badge">M</span>Blockchain</a>
+                </li>
+              
+                <li>
+                  <a href="#order.v1.GetOrderListRequest"><span class="badge">M</span>GetOrderListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#order.v1.GetOrderListResponse"><span class="badge">M</span>GetOrderListResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#order.v1.GetOrderRequest"><span class="badge">M</span>GetOrderRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#order.v1.GetOrderResponse"><span class="badge">M</span>GetOrderResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#order.v1.Payment"><span class="badge">M</span>Payment</a>
+                </li>
+              
+                <li>
+                  <a href="#order.v1.ProductInfo"><span class="badge">M</span>ProductInfo</a>
+                </li>
+              
+                <li>
+                  <a href="#order.v1.TraderInfo"><span class="badge">M</span>TraderInfo</a>
+                </li>
+              
+                <li>
+                  <a href="#order.v1.Transaction"><span class="badge">M</span>Transaction</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#order.v1.OrderService"><span class="badge">S</span>OrderService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="common/v1/enums.proto">common/v1/enums.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+
+      
+        <h3 id="common.v1.ActivationStatus">ActivationStatus</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>ACTIVATION_STATUS_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ACTIVATION_STATUS_PENDING</td>
+                <td>1</td>
+                <td><p>Pending activation</p></td>
+              </tr>
+            
+              <tr>
+                <td>ACTIVATION_STATUS_ACTIVE</td>
+                <td>2</td>
+                <td><p>Activated</p></td>
+              </tr>
+            
+              <tr>
+                <td>ACTIVATION_STATUS_EXPIRED</td>
+                <td>3</td>
+                <td><p>Expired</p></td>
+              </tr>
+            
+              <tr>
+                <td>ACTIVATION_STATUS_REVOKED</td>
+                <td>4</td>
+                <td><p>Revoked</p></td>
+              </tr>
+            
+              <tr>
+                <td>ACTIVATION_STATUS_SUSPENDED</td>
+                <td>5</td>
+                <td><p>Suspended</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.v1.LicenseType">LicenseType</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>LICENSE_TYPE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>LICENSE_TYPE_PERMANENT</td>
+                <td>1</td>
+                <td><p>Permanent license</p></td>
+              </tr>
+            
+              <tr>
+                <td>LICENSE_TYPE_SUBSCRIPTION</td>
+                <td>2</td>
+                <td><p>Subscription license</p></td>
+              </tr>
+            
+              <tr>
+                <td>LICENSE_TYPE_TRIAL</td>
+                <td>3</td>
+                <td><p>Trial license</p></td>
+              </tr>
+            
+              <tr>
+                <td>LICENSE_TYPE_EDUCATIONAL</td>
+                <td>4</td>
+                <td><p>Educational license</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.v1.OrderStatus">OrderStatus</h3>
+        <p>Order status enum</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>ORDER_STATUS_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ORDER_STATUS_COMPLETED</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ORDER_STATUS_FAILED</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.v1.ProductType">ProductType</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>PRODUCT_TYPE_APPLICATION</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>PRODUCT_TYPE_IN_APP_PURCHASE</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>PRODUCT_TYPE_SERVICE</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>PRODUCT_TYPE_SUBSCRIPTION</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>PRODUCT_TYPE_DONATION</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.v1.SystemChainId">SystemChainId</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SYSTEM_CHAIN_ID_FIAT</td>
+                <td>0</td>
+                <td><p>Fiat currency system</p></td>
+              </tr>
+            
+              <tr>
+                <td>SYSTEM_CHAIN_ID_BTC</td>
+                <td>1</td>
+                <td><p>Bitcoin</p></td>
+              </tr>
+            
+              <tr>
+                <td>SYSTEM_CHAIN_ID_ETH</td>
+                <td>2</td>
+                <td><p>Ethereum</p></td>
+              </tr>
+            
+              <tr>
+                <td>SYSTEM_CHAIN_ID_OP</td>
+                <td>3</td>
+                <td><p>Optimism</p></td>
+              </tr>
+            
+              <tr>
+                <td>SYSTEM_CHAIN_ID_CMT</td>
+                <td>4</td>
+                <td><p>CMT</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.v1.TransactionType">TransactionType</h3>
+        <p>Transaction type enum</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>TRANSACTION_TYPE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>TRANSACTION_TYPE_NATIVE</td>
+                <td>1</td>
+                <td><p>Native token transfer</p></td>
+              </tr>
+            
+              <tr>
+                <td>TRANSACTION_TYPE_TOKEN_TRANSFER</td>
+                <td>2</td>
+                <td><p>ERC20 token transfer</p></td>
+              </tr>
+            
+              <tr>
+                <td>TRANSACTION_TYPE_CONTRACT_CREATION</td>
+                <td>3</td>
+                <td><p>Contract creation</p></td>
+              </tr>
+            
+              <tr>
+                <td>TRANSACTION_TYPE_CONTRACT_INTERACTION</td>
+                <td>4</td>
+                <td><p>Contract interaction</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="common.v1.WebhookStatus">WebhookStatus</h3>
+        <p>Webhook status enum</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>WEBHOOK_STATUS_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>WEBHOOK_STATUS_PENDING</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>WEBHOOK_STATUS_SUCCESS</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>WEBHOOK_STATUS_FAILED</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>WEBHOOK_STATUS_TIMEOUT</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="auth/v1/auth.proto">auth/v1/auth.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="auth.v1.ActivateAndGrantRequest">ActivateAndGrantRequest</h3>
+        <p>==================== Complete activation and grant VC related ====================</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>jws</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="auth.v1.ActivateAndGrantResponse">ActivateAndGrantResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>verifiableCredential</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="auth.v1.GetApplicationSchemaRequest">GetApplicationSchemaRequest</h3>
+        <p>==================== Get application schema related ====================</p><p>Empty request - returns standard schema</p>
+
+        
+
+        
+      
+        <h3 id="auth.v1.GetApplicationSchemaResponse">GetApplicationSchemaResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>manifest</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>applicationVerifiableCredential</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="auth.v1.VerifyLicenseRequest">VerifyLicenseRequest</h3>
+        <p>==================== Verify product license VC related ====================</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>credential</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Verifiable credential to be verified </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="auth.v1.VerifyLicenseResponse">VerifyLicenseResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>valid</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="auth.v1.AuthService">AuthService</h3>
+        <p>Auth service definition</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>GetApplicationSchema</td>
+                <td><a href="#auth.v1.GetApplicationSchemaRequest">GetApplicationSchemaRequest</a></td>
+                <td><a href="#auth.v1.GetApplicationSchemaResponse">GetApplicationSchemaResponse</a></td>
+                <td><p>Get application schema interface</p></td>
+              </tr>
+            
+              <tr>
+                <td>ActivateAndGrant</td>
+                <td><a href="#auth.v1.ActivateAndGrantRequest">ActivateAndGrantRequest</a></td>
+                <td><a href="#auth.v1.ActivateAndGrantResponse">ActivateAndGrantResponse</a></td>
+                <td><p>Complete activation and grant VC interface</p></td>
+              </tr>
+            
+              <tr>
+                <td>VerifyLicense</td>
+                <td><a href="#auth.v1.VerifyLicenseRequest">VerifyLicenseRequest</a></td>
+                <td><a href="#auth.v1.VerifyLicenseResponse">VerifyLicenseResponse</a></td>
+                <td><p>Verify product license VC interface</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="common/v1/response.proto">common/v1/response.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="common.v1.BaseResponse">BaseResponse</h3>
+        <p>Base response message</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>code</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>message</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="blockchain/v1/blockchain.proto">blockchain/v1/blockchain.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="blockchain.v1.AddWalletTokenRequest">AddWalletTokenRequest</h3>
+        <p>============== Wallet-Token Association Interface ==============</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>walletId</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>contractAddress</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.AddWalletTokenResponse">AddWalletTokenResponse</h3>
+        <p>Empty response</p>
+
+        
+
+        
+      
+        <h3 id="blockchain.v1.AssetInfo">AssetInfo</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>blockchain</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tokenName</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tokenSymbol</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tokenDecimals</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tokenType</td>
+                  <td><a href="#blockchain.v1.TokenType">TokenType</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>contractAddress</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Optional for native tokens </p></td>
+                </tr>
+              
+                <tr>
+                  <td>holderAddress</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>balance</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>balanceRawInteger</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>balanceUsd</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tokenPrice</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>thumbnail</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>isUserAdded</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>True if token was manually added by user, false if from Ankr API </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tokenId</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td>optional</td>
+                  <td><p>Token ID from database (only for user-added tokens) </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.ChainInfo">ChainInfo</h3>
+        <p>Chain information</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Database primary key </p></td>
+                </tr>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td></td>
+                  <td><p>System chain identifier </p></td>
+                </tr>
+              
+                <tr>
+                  <td>chainId</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Blockchain network chain ID </p></td>
+                </tr>
+              
+                <tr>
+                  <td>chainName</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Chain name, e.g. &#34;ethereum&#34;, &#34;polygon&#34; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>networkName</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Network name, e.g. &#34;mainnet&#34;, &#34;testnet&#34; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>nativeCurrency</td>
+                  <td><a href="#blockchain.v1.NativeCurrency">NativeCurrency</a></td>
+                  <td></td>
+                  <td><p>Native currency information </p></td>
+                </tr>
+              
+                <tr>
+                  <td>blockTime</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Block time (seconds) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>confirmationBlocks</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Number of confirmation blocks </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rpcUrl</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>HTTP RPC endpoint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rpcWsUrl</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>WebSocket RPC endpoint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>explorerUrl</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Block explorer base URL </p></td>
+                </tr>
+              
+                <tr>
+                  <td>explorerTxUrl</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Transaction URL template </p></td>
+                </tr>
+              
+                <tr>
+                  <td>explorerAddressUrl</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Address URL template </p></td>
+                </tr>
+              
+                <tr>
+                  <td>isTestnet</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Whether it&#39;s a testnet </p></td>
+                </tr>
+              
+                <tr>
+                  <td>connectionStatus</td>
+                  <td><a href="#blockchain.v1.ConnectionStatus">ConnectionStatus</a></td>
+                  <td></td>
+                  <td><p>Connection status </p></td>
+                </tr>
+              
+                <tr>
+                  <td>createdAt</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updatedAt</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.CreateRsaKeyRequest">CreateRsaKeyRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>privateKey</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>publicKey</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>keyLabel</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.CreateRsaKeyResponse">CreateRsaKeyResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>rsaKey</td>
+                  <td><a href="#blockchain.v1.RsaKeyInfo">RsaKeyInfo</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.CreateWalletRequest">CreateWalletRequest</h3>
+        <p>============== Wallet Management Interface ==============</p><p>Create wallet request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td></td>
+                  <td><p>(1=BTC, 2=ETH, 3=OP, 4=CMT) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>label</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>publicKey</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rsaKeyIds</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.CreateWalletResponse">CreateWalletResponse</h3>
+        <p>Create wallet response</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>wallet</td>
+                  <td><a href="#blockchain.v1.WalletInfo">WalletInfo</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.DeleteChainRequest">DeleteChainRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.DeleteChainResponse">DeleteChainResponse</h3>
+        <p>Empty response</p>
+
+        
+
+        
+      
+        <h3 id="blockchain.v1.DeleteRsaKeyRequest">DeleteRsaKeyRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.DeleteRsaKeyResponse">DeleteRsaKeyResponse</h3>
+        <p>Empty response</p>
+
+        
+
+        
+      
+        <h3 id="blockchain.v1.DeleteWalletRequest">DeleteWalletRequest</h3>
+        <p>Delete wallet request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.DeleteWalletResponse">DeleteWalletResponse</h3>
+        <p>Delete wallet response</p><p>Empty response</p>
+
+        
+
+        
+      
+        <h3 id="blockchain.v1.GetChainListRequest">GetChainListRequest</h3>
+        <p>============== Chain Management Interface ==============</p><p>No parameters</p>
+
+        
+
+        
+      
+        <h3 id="blockchain.v1.GetChainListResponse">GetChainListResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>chains</td>
+                  <td><a href="#blockchain.v1.ChainInfo">ChainInfo</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.GetRsaKeyListRequest">GetRsaKeyListRequest</h3>
+        <p>============== RSA Key Management Interface (New Architecture) ==============</p><p>No parameters - returns all RSA keys</p>
+
+        
+
+        
+      
+        <h3 id="blockchain.v1.GetRsaKeyListResponse">GetRsaKeyListResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>rsaKeys</td>
+                  <td><a href="#blockchain.v1.RsaKeyInfo">RsaKeyInfo</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.GetTokenInfoRequest">GetTokenInfoRequest</h3>
+        <p>============== Token Information Interface ==============</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>contractAddress</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.GetTokenInfoResponse">GetTokenInfoResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>token</td>
+                  <td><a href="#blockchain.v1.TokenInfo">TokenInfo</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.GetWalletAssetsRequest">GetWalletAssetsRequest</h3>
+        <p>============== Assets Query Interface ==============</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.GetWalletAssetsResponse">GetWalletAssetsResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>totalBalanceUsd</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>totalCount</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>assets</td>
+                  <td><a href="#blockchain.v1.AssetInfo">AssetInfo</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>timestamp</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.GetWalletBalancesRequest">GetWalletBalancesRequest</h3>
+        <p>============== Balance Query Interface ==============</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.GetWalletBalancesResponse">GetWalletBalancesResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>balances</td>
+                  <td><a href="#blockchain.v1.TokenBalance">TokenBalance</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.GetWalletListRequest">GetWalletListRequest</h3>
+        <p>Get wallet list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.GetWalletListResponse">GetWalletListResponse</h3>
+        <p>Get wallet list response</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>wallets</td>
+                  <td><a href="#blockchain.v1.WalletInfo">WalletInfo</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.LaresPassRsaKeyCallbackRequest">LaresPassRsaKeyCallbackRequest</h3>
+        <p>============== LaresPass Callback Interface ==============</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>jws</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.LaresPassRsaKeyCallbackResponse">LaresPassRsaKeyCallbackResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>txHash</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.NativeCurrency">NativeCurrency</h3>
+        <p>Native currency information</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>symbol</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Currency symbol, e.g. &#34;ETH&#34;, &#34;MATIC&#34; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Currency name, e.g. &#34;Ethereum&#34;, &#34;Polygon&#34; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>decimals</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Decimal places, usually 18 </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.RemoveWalletTokenRequest">RemoveWalletTokenRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>walletId</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tokenId</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.RemoveWalletTokenResponse">RemoveWalletTokenResponse</h3>
+        <p>Empty response</p>
+
+        
+
+        
+      
+        <h3 id="blockchain.v1.RsaKeyInfo">RsaKeyInfo</h3>
+        <p>RSA key information (new architecture)</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>privateKey</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>publicKey</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>keyLabel</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>createdAt</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updatedAt</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.TokenBalance">TokenBalance</h3>
+        <p>Token balance information</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>isNative</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Whether it&#39;s a native token </p></td>
+                </tr>
+              
+                <tr>
+                  <td>symbol</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Token symbol </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Token name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>decimals</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Decimal places </p></td>
+                </tr>
+              
+                <tr>
+                  <td>balance</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Balance (string format) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>formattedBalance</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Formatted balance </p></td>
+                </tr>
+              
+                <tr>
+                  <td>contractAddress</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Contract address (can be empty for native tokens) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>isUserAdded</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>True if token was manually added by user </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tokenId</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td>optional</td>
+                  <td><p>Token ID from database (only for user-added tokens) </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.TokenInfo">TokenInfo</h3>
+        <p>Token information</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>chainId</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>contractAddress</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>symbol</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>decimals</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>createdAt</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updatedAt</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.UpdateChainRequest">UpdateChainRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rpcUrl</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rpcWsUrl</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.UpdateChainResponse">UpdateChainResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>chain</td>
+                  <td><a href="#blockchain.v1.ChainInfo">ChainInfo</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.UpdateWalletRequest">UpdateWalletRequest</h3>
+        <p>Update wallet request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>label</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>publicKey</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.UpdateWalletResponse">UpdateWalletResponse</h3>
+        <p>Update wallet response</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>wallet</td>
+                  <td><a href="#blockchain.v1.WalletInfo">WalletInfo</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="blockchain.v1.WalletInfo">WalletInfo</h3>
+        <p>Wallet information</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>chainId</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>label</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>publicKey</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>createdAt</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updatedAt</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="blockchain.v1.ConnectionStatus">ConnectionStatus</h3>
+        <p>Connection status enum</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>DISCONNECTED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CONNECTING</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>CONNECTED</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>ERROR</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="blockchain.v1.TokenType">TokenType</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>TOKEN_TYPE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>TOKEN_TYPE_NATIVE</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>TOKEN_TYPE_ERC20</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>TOKEN_TYPE_ERC721</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>TOKEN_TYPE_ERC1155</td>
+                <td>4</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id="blockchain.v1.BlockchainService">BlockchainService</h3>
+        <p>============== Blockchain Service Interface ==============</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>GetChainList</td>
+                <td><a href="#blockchain.v1.GetChainListRequest">GetChainListRequest</a></td>
+                <td><a href="#blockchain.v1.GetChainListResponse">GetChainListResponse</a></td>
+                <td><p>Chain management</p></td>
+              </tr>
+            
+              <tr>
+                <td>UpdateChain</td>
+                <td><a href="#blockchain.v1.UpdateChainRequest">UpdateChainRequest</a></td>
+                <td><a href="#blockchain.v1.UpdateChainResponse">UpdateChainResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>DeleteChain</td>
+                <td><a href="#blockchain.v1.DeleteChainRequest">DeleteChainRequest</a></td>
+                <td><a href="#blockchain.v1.DeleteChainResponse">DeleteChainResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>GetTokenInfo</td>
+                <td><a href="#blockchain.v1.GetTokenInfoRequest">GetTokenInfoRequest</a></td>
+                <td><a href="#blockchain.v1.GetTokenInfoResponse">GetTokenInfoResponse</a></td>
+                <td><p>Token information query (preview)</p></td>
+              </tr>
+            
+              <tr>
+                <td>CreateWallet</td>
+                <td><a href="#blockchain.v1.CreateWalletRequest">CreateWalletRequest</a></td>
+                <td><a href="#blockchain.v1.CreateWalletResponse">CreateWalletResponse</a></td>
+                <td><p>Wallet management</p></td>
+              </tr>
+            
+              <tr>
+                <td>GetWalletList</td>
+                <td><a href="#blockchain.v1.GetWalletListRequest">GetWalletListRequest</a></td>
+                <td><a href="#blockchain.v1.GetWalletListResponse">GetWalletListResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>UpdateWallet</td>
+                <td><a href="#blockchain.v1.UpdateWalletRequest">UpdateWalletRequest</a></td>
+                <td><a href="#blockchain.v1.UpdateWalletResponse">UpdateWalletResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>DeleteWallet</td>
+                <td><a href="#blockchain.v1.DeleteWalletRequest">DeleteWalletRequest</a></td>
+                <td><a href="#blockchain.v1.DeleteWalletResponse">DeleteWalletResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>AddWalletToken</td>
+                <td><a href="#blockchain.v1.AddWalletTokenRequest">AddWalletTokenRequest</a></td>
+                <td><a href="#blockchain.v1.AddWalletTokenResponse">AddWalletTokenResponse</a></td>
+                <td><p>Wallet-token association management</p></td>
+              </tr>
+            
+              <tr>
+                <td>RemoveWalletToken</td>
+                <td><a href="#blockchain.v1.RemoveWalletTokenRequest">RemoveWalletTokenRequest</a></td>
+                <td><a href="#blockchain.v1.RemoveWalletTokenResponse">RemoveWalletTokenResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>GetWalletBalances</td>
+                <td><a href="#blockchain.v1.GetWalletBalancesRequest">GetWalletBalancesRequest</a></td>
+                <td><a href="#blockchain.v1.GetWalletBalancesResponse">GetWalletBalancesResponse</a></td>
+                <td><p>Balance query</p></td>
+              </tr>
+            
+              <tr>
+                <td>GetWalletAssets</td>
+                <td><a href="#blockchain.v1.GetWalletAssetsRequest">GetWalletAssetsRequest</a></td>
+                <td><a href="#blockchain.v1.GetWalletAssetsResponse">GetWalletAssetsResponse</a></td>
+                <td><p>Assets query</p></td>
+              </tr>
+            
+              <tr>
+                <td>GetRsaKeyList</td>
+                <td><a href="#blockchain.v1.GetRsaKeyListRequest">GetRsaKeyListRequest</a></td>
+                <td><a href="#blockchain.v1.GetRsaKeyListResponse">GetRsaKeyListResponse</a></td>
+                <td><p>RSA key management (new architecture)</p></td>
+              </tr>
+            
+              <tr>
+                <td>CreateRsaKey</td>
+                <td><a href="#blockchain.v1.CreateRsaKeyRequest">CreateRsaKeyRequest</a></td>
+                <td><a href="#blockchain.v1.CreateRsaKeyResponse">CreateRsaKeyResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>DeleteRsaKey</td>
+                <td><a href="#blockchain.v1.DeleteRsaKeyRequest">DeleteRsaKeyRequest</a></td>
+                <td><a href="#blockchain.v1.DeleteRsaKeyResponse">DeleteRsaKeyResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>LaresPassRsaKeyCallback</td>
+                <td><a href="#blockchain.v1.LaresPassRsaKeyCallbackRequest">LaresPassRsaKeyCallbackRequest</a></td>
+                <td><a href="#blockchain.v1.LaresPassRsaKeyCallbackResponse">LaresPassRsaKeyCallbackResponse</a></td>
+                <td><p>LaresPass callback for RSA key signature</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="google/type/datetime.proto">google/type/datetime.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="google.type.DateTime">DateTime</h3>
+        <p>Represents civil time (or occasionally physical time).</p><p>This type can represent a civil time in one of a few possible ways:</p><p>* When utc_offset is set and time_zone is unset: a civil time on a calendar</p><p>day with a particular offset from UTC.</p><p>* When time_zone is set and utc_offset is unset: a civil time on a calendar</p><p>day in a particular time zone.</p><p>* When neither time_zone nor utc_offset is set: a civil time on a calendar</p><p>day in local time.</p><p>The date is relative to the Proleptic Gregorian Calendar.</p><p>If year is 0, the DateTime is considered not to have a specific year. month</p><p>and day must have valid, non-zero values.</p><p>This type may also be used to represent a physical time if all the date and</p><p>time fields are set and either case of the `time_offset` oneof is set.</p><p>Consider using `Timestamp` message for physical time instead. If your use</p><p>case also would like to store the user's timezone, that can be done in</p><p>another field.</p><p>This type is more flexible than some applications may want. Make sure to</p><p>document and validate your application's limitations.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>year</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a
+datetime without a year. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>month</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Required. Month of year. Must be from 1 to 12. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>day</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Required. Day of month. Must be from 1 to 31 and valid for the year and
+month. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hours</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Required. Hours of day in 24 hour format. Should be from 0 to 23. An API
+may choose to allow the value &#34;24:00:00&#34; for scenarios like business
+closing time. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>minutes</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Required. Minutes of hour of day. Must be from 0 to 59. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>seconds</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Required. Seconds of minutes of the time. Must normally be from 0 to 59. An
+API may allow the value 60 if it allows leap-seconds. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>nanos</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Required. Fractions of seconds in nanoseconds. Must be from 0 to
+999,999,999. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>utc_offset</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>UTC offset. Must be whole seconds, between -18 hours and &#43;18 hours.
+For example, a UTC offset of -4:00 would be represented as
+{ seconds: -14400 }. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>time_zone</td>
+                  <td><a href="#google.type.TimeZone">TimeZone</a></td>
+                  <td></td>
+                  <td><p>Time zone. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="google.type.TimeZone">TimeZone</h3>
+        <p>Represents a time zone from the</p><p>[IANA Time Zone Database](https://www.iana.org/time-zones).</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>IANA Time Zone Database time zone, e.g. &#34;America/New_York&#34;. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>version</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Optional. IANA Time Zone Database version number, e.g. &#34;2019a&#34;. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="keymanage/v1/keymanage.proto">keymanage/v1/keymanage.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="keymanage.v1.SubmitPrivateKeyRequest">SubmitPrivateKeyRequest</h3>
+        <p>==================== Submit private key related ====================</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>privateKey</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Private key string from .env.sh </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="keymanage.v1.SubmitPrivateKeyResponse">SubmitPrivateKeyResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>submissionId</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Unique ID for tracking this submission </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="keymanage.v1.KeyManageService">KeyManageService</h3>
+        <p>Key management service definition</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SubmitPrivateKey</td>
+                <td><a href="#keymanage.v1.SubmitPrivateKeyRequest">SubmitPrivateKeyRequest</a></td>
+                <td><a href="#keymanage.v1.SubmitPrivateKeyResponse">SubmitPrivateKeyResponse</a></td>
+                <td><p>Submit private key to external service</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="order/v1/order.proto">order/v1/order.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="order.v1.Blockchain">Blockchain</h3>
+        <p>Blockchain information</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>txHash</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Transaction hash </p></td>
+                </tr>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td></td>
+                  <td><p>System chain identifier </p></td>
+                </tr>
+              
+                <tr>
+                  <td>chainId</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Chain ID </p></td>
+                </tr>
+              
+                <tr>
+                  <td>blockHeight</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Block height, e.g., 118234567 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>gasUsed</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Gas used, e.g., 21000 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>gasPrice</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Gas price, e.g., &#34;0.001 Gwei&#34; </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="order.v1.GetOrderListRequest">GetOrderListRequest</h3>
+        <p>GetOrderList request and response</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>page</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>pageSize</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>walletId</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Optional: filter by wallet ID </p></td>
+                </tr>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Optional: filter by address </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="order.v1.GetOrderListResponse">GetOrderListResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>total</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>page</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>pageSize</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>transactions</td>
+                  <td><a href="#order.v1.Transaction">Transaction</a></td>
+                  <td>repeated</td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="order.v1.GetOrderRequest">GetOrderRequest</h3>
+        <p>Get order detail by database ID or transaction hash</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td>optional</td>
+                  <td><p>Database primary key ID </p></td>
+                </tr>
+              
+                <tr>
+                  <td>txHash</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Transaction hash </p></td>
+                </tr>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td>optional</td>
+                  <td><p>Required when using txHash </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="order.v1.GetOrderResponse">GetOrderResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>order</td>
+                  <td><a href="#order.v1.Transaction">Transaction</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="order.v1.Payment">Payment</h3>
+        <p>PaymentTransaction additional info</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>paymentId</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>PaymentTransaction ID </p></td>
+                </tr>
+              
+                <tr>
+                  <td>chainId</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Chain ID (numeric) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>listeningAddress</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Listening address </p></td>
+                </tr>
+              
+                <tr>
+                  <td>direction</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Transaction direction </p></td>
+                </tr>
+              
+                <tr>
+                  <td>payerAddress</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Payer blockchain address </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fromDid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>DID identity info </p></td>
+                </tr>
+              
+                <tr>
+                  <td>toDid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fromOlaresId</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>toOlaresId</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>totalAmount</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Amount and currency info </p></td>
+                </tr>
+              
+                <tr>
+                  <td>currencyChainId</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>currencyToken</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>currencySymbol</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>currencyName</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>currencyDecimals</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>productionId</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Product info </p></td>
+                </tr>
+              
+                <tr>
+                  <td>itemCount</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Status info </p></td>
+                </tr>
+              
+                <tr>
+                  <td>merchantWebhookStatus</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td>optional</td>
+                  <td><p>Webhook status </p></td>
+                </tr>
+              
+                <tr>
+                  <td>merchantWebhookUrl</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>merchantWebhookAttempts</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>merchantWebhookLastAttempt</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>merchantWebhookResponse</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>userWebhookStatus</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>userWebhookUrl</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>userWebhookAttempts</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>userWebhookLastAttempt</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>userWebhookResponse</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>paymentCreatedAt</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Time info </p></td>
+                </tr>
+              
+                <tr>
+                  <td>paymentUpdatedAt</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>completedAt</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td>optional</td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>product</td>
+                  <td><a href="#order.v1.ProductInfo">ProductInfo</a></td>
+                  <td>optional</td>
+                  <td><p>Product details (if available) </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="order.v1.ProductInfo">ProductInfo</h3>
+        <p>Product information (shared between list and detail views)</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>productId</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Product name, e.g., &#34;MagicDog Notes - Smart Note Taking&#34; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>appName</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>App name, e.g., &#34;magicdog-notes&#34; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>version</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>App version, e.g., &#34;v1.0.0.1&#34; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#common.v1.ProductType">common.v1.ProductType</a></td>
+                  <td></td>
+                  <td><p>Product type, e.g., APPLICATION </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quantity</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Quantity, e.g., 1 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>iconUrl</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Icon URL </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="order.v1.TraderInfo">TraderInfo</h3>
+        <p>Trader information</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>did</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>DID identifier </p></td>
+                </tr>
+              
+                <tr>
+                  <td>olaresId</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Olares username, e.g., &#34;alice@myolares&#34; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>displayName</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Display name </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="order.v1.Transaction">Transaction</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>TransactionRecord base information
+
+UUID from TransactionRecord </p></td>
+                </tr>
+              
+                <tr>
+                  <td>walletId</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Wallet ID </p></td>
+                </tr>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Wallet address </p></td>
+                </tr>
+              
+                <tr>
+                  <td>txHash</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Transaction hash </p></td>
+                </tr>
+              
+                <tr>
+                  <td>systemChainId</td>
+                  <td><a href="#common.v1.SystemChainId">common.v1.SystemChainId</a></td>
+                  <td></td>
+                  <td><p>System chain ID </p></td>
+                </tr>
+              
+                <tr>
+                  <td>timestamp</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Transaction timestamp </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fromAddress</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Sender address </p></td>
+                </tr>
+              
+                <tr>
+                  <td>toAddress</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Receiver address </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Native token value </p></td>
+                </tr>
+              
+                <tr>
+                  <td>amount</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Token amount </p></td>
+                </tr>
+              
+                <tr>
+                  <td>symbol</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Token symbol </p></td>
+                </tr>
+              
+                <tr>
+                  <td>contractAddress</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Contract address (can be empty) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>txStatus</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Transaction status </p></td>
+                </tr>
+              
+                <tr>
+                  <td>transactionType</td>
+                  <td><a href="#common.v1.TransactionType">common.v1.TransactionType</a></td>
+                  <td></td>
+                  <td><p>Transaction type </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rawData</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Raw data (JSON string) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>createdAt</td>
+                  <td><a href="#int64">int64</a></td>
+                  <td></td>
+                  <td><p>Record creation time </p></td>
+                </tr>
+              
+                <tr>
+                  <td>isOlaresTransaction</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Flag indicating if this is an Olares Pay transaction </p></td>
+                </tr>
+              
+                <tr>
+                  <td>walletLabel</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Wallet display label </p></td>
+                </tr>
+              
+                <tr>
+                  <td>payment</td>
+                  <td><a href="#order.v1.Payment">Payment</a></td>
+                  <td>optional</td>
+                  <td><p>PaymentTransaction additional info (if exists) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>blockchain</td>
+                  <td><a href="#order.v1.Blockchain">Blockchain</a></td>
+                  <td>optional</td>
+                  <td><p>Blockchain info (moved from OrderDetailInfo) </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="order.v1.OrderService">OrderService</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>GetOrder</td>
+                <td><a href="#order.v1.GetOrderRequest">GetOrderRequest</a></td>
+                <td><a href="#order.v1.GetOrderResponse">GetOrderResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>GetOrderList</td>
+                <td><a href="#order.v1.GetOrderListRequest">GetOrderListRequest</a></td>
+                <td><a href="#order.v1.GetOrderListResponse">GetOrderListResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+
